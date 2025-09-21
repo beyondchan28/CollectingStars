@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwl56k15phhv0"]
+
+[ext_resource type="Texture2D" uid="uid://d1hg6btdef5gb" path="res://icon.svg" id="1_u4i2n"]
+[ext_resource type="Script" path="res://Scripts/star_button.gd" id="2_qc7ls"]
+
+[node name="StarButton" type="TextureButton"]
+self_modulate = Color(0, 0, 0, 1)
+texture_normal = ExtResource("1_u4i2n")
+script = ExtResource("2_qc7ls")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "LABEL"
+horizontal_alignment = 1
+vertical_alignment = 1

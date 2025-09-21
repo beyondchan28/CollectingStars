@@ -1,13 +1,25 @@
-extends TextureButton
+class_name StarButton extends TextureButton
 
-var _star_amount := 99 # how many star this button contain
-var _star_type
+@export var _star_amount := 0 # how many star this button contain
+@export var _star_type := Star.StarType.RED
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	match _star_type:
+		Star.StarType.RED:
+			$Label.text = "RED"
+		Star.StarType.GREEN:
+			$Label.text = "RED"
+		Star.StarType.BLUE:
+			$Label.text = "RED"
 
+func increase_star_amount() -> void:
+	_star_amount += 1
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func decrease_star_amount() -> void:
+	_star_amount -= 1
+
+func set_star_type(s: Star.StarType) -> void:
+	_star_type = s
+
+func get_star_type() -> Star.StarType:
+	return _star_type
