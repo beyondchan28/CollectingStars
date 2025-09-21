@@ -14,3 +14,7 @@ config/name="CollectingStars"
 run/main_scene="res://Scenes/game.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+MouseState="*res://Scripts/mouse_state.gd"

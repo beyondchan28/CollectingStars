@@ -1,15 +1,15 @@
-extends Node2D
-
-var _is_hold := true
+class_name Star extends RigidBody2D
 
 func _ready() -> void:
-	$RigidBody2D.sleeping = true
-	$RigidBody2D.freeze = true
+	$PickArea.input_event.connect(_on_star_clicked)
+	freeze_physics(true)
 
-func _input(event: InputEvent) -> void:
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		_is_hold = false
-		$RigidBody2D.sleeping = false
-		$RigidBody2D.freeze = false
-	if _is_hold:
-		self.global_position = get_global_mouse_position()
+func freeze_physics(b: bool) -> void:
+	self.sleeping = b
+	self.freeze = b
+
+func _on_star_clicked(_viewport, event: InputEvent, _shape_idx) -> void:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		if event.is_pressed():
+			freeze_physics(true)
+			MouseState.set_holded_star(self)

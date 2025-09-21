@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://dsbbkdrb63636"]
+[gd_scene load_steps=7 format=3 uid="uid://dsbbkdrb63636"]
 
 [ext_resource type="PackedScene" uid="uid://dxtyomnokngcc" path="res://Scenes/star.tscn" id="1_ajy5d"]
-[ext_resource type="Script" path="res://Scripts/game.gd" id="1_judn8"]
 [ext_resource type="Texture2D" uid="uid://d1hg6btdef5gb" path="res://icon.svg" id="1_pjd5t"]
 [ext_resource type="Script" path="res://Scripts/star_button.gd" id="2_f0i5m"]
 [ext_resource type="Script" path="res://Scripts/star_inventory.gd" id="2_u5lqo"]
@@ -13,7 +12,6 @@ size = Vector2(70, 786)
 size = Vector2(70, 1182)
 
 [node name="Game" type="Node2D"]
-script = ExtResource("1_judn8")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 position = Vector2(110, 126)
@@ -25,7 +23,7 @@ polygon = PackedVector2Array(0, -25, -6, -7, -21, 0, -6, 6, 0, 21, 6, 5, 22, 0, 
 
 [node name="StarsParent" type="Node2D" parent="."]
 
-[node name="RigidBody2D" parent="StarsParent" instance=ExtResource("1_ajy5d")]
+[node name="Star" parent="StarsParent" instance=ExtResource("1_ajy5d")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
