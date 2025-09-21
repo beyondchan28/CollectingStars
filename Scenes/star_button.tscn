@@ -5,10 +5,12 @@
 
 [node name="StarButton" type="TextureButton"]
 self_modulate = Color(0, 0, 0, 1)
+mouse_filter = 1
+action_mode = 0
 texture_normal = ExtResource("1_u4i2n")
 script = ExtResource("2_qc7ls")
 
-[node name="Label" type="Label" parent="."]
+[node name="TypeLabel" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,4 +19,19 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "LABEL"
 horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AmountLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "22"
+horizontal_alignment = 2
 vertical_alignment = 1

@@ -13,7 +13,6 @@ func _stored_star() -> void:
 	else:
 		for _btn: StarButton in _all_star_btn:
 			if _btn.get_star_type() == _star.get_type():
-				print("GGGG")
 				_btn.increase_star_amount()
 				_star.queue_free()
 				return

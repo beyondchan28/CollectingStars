@@ -8,9 +8,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		# check mouse event is pressed or release 
 		if _is_drag == false and event.is_pressed():
-			_is_drag = true
+			set_drag(true)
 		elif _is_drag and event.is_released():
-			_is_drag = false
+			set_drag(false)
 			# if holding a star, activate physics and clear
 			if is_holding():
 				_holded_star.freeze_physics(false)
@@ -29,5 +29,8 @@ func set_holded_star(s: Star) -> void:
 func get_holded_star() -> Star:
 	assert(is_holding(), "Currently not holding a star")
 	return _holded_star
+
 func is_drag() -> bool:
 	return _is_drag
+func set_drag(b: bool) -> void:
+	_is_drag = b

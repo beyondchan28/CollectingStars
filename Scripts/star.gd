@@ -39,5 +39,7 @@ func _on_star_mouse_exited() -> void:
 	var tween = create_tween()
 	tween.tween_property($Display, "scale", Vector2.ONE, 0.2)
 
+func set_type(st: StarType) -> void:
+	_type = st
 func get_type() -> StarType:
 	return _type
