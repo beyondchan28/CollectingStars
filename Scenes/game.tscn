@@ -1,0 +1,113 @@
+[gd_scene load_steps=6 format=3 uid="uid://dsbbkdrb63636"]
+
+[ext_resource type="PackedScene" uid="uid://dxtyomnokngcc" path="res://Scenes/star.tscn" id="1_ajy5d"]
+[ext_resource type="Script" path="res://Scripts/game.gd" id="1_judn8"]
+[ext_resource type="Texture2D" uid="uid://d1hg6btdef5gb" path="res://icon.svg" id="1_pjd5t"]
+[ext_resource type="Script" path="res://Scripts/star_button.gd" id="2_f0i5m"]
+[ext_resource type="Script" path="res://Scripts/star_inventory.gd" id="2_u5lqo"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_judn8")
+
+[node name="StarsParent" type="Node2D" parent="."]
+
+[node name="RigidBody2D" parent="StarsParent" instance=ExtResource("1_ajy5d")]
+
+[node name="RigidBody2D2" parent="StarsParent" instance=ExtResource("1_ajy5d")]
+position = Vector2(98, 60)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="StarInventory" type="ScrollContainer" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.628
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.543945
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("2_u5lqo")
+
+[node name="StarContainer" type="GridContainer" parent="CanvasLayer/StarInventory"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_constants/h_separation = 7
+columns = 3
+
+[node name="Button" type="TextureButton" parent="CanvasLayer/StarInventory/StarContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_pjd5t")
+script = ExtResource("2_f0i5m")
+
+[node name="Button4" type="TextureButton" parent="CanvasLayer/StarInventory/StarContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_pjd5t")
+
+[node name="Button5" type="TextureButton" parent="CanvasLayer/StarInventory/StarContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_pjd5t")
+
+[node name="Button6" type="TextureButton" parent="CanvasLayer/StarInventory/StarContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_pjd5t")
+
+[node name="Button7" type="TextureButton" parent="CanvasLayer/StarInventory/StarContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_pjd5t")
+
+[node name="Button8" type="TextureButton" parent="CanvasLayer/StarInventory/StarContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_pjd5t")
+
+[node name="Button9" type="TextureButton" parent="CanvasLayer/StarInventory/StarContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_pjd5t")
+
+[node name="Button10" type="TextureButton" parent="CanvasLayer/StarInventory/StarContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_pjd5t")
+
+[node name="Button11" type="TextureButton" parent="CanvasLayer/StarInventory/StarContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_pjd5t")
+
+[node name="Button12" type="TextureButton" parent="CanvasLayer/StarInventory/StarContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_pjd5t")
+
+[node name="Button13" type="TextureButton" parent="CanvasLayer/StarInventory/StarContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_pjd5t")
+
+[node name="Button2" type="TextureButton" parent="CanvasLayer/StarInventory/StarContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_pjd5t")
+
+[node name="Button3" type="TextureButton" parent="CanvasLayer/StarInventory/StarContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_pjd5t")
+
+[node name="Button14" type="TextureButton" parent="CanvasLayer/StarInventory/StarContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_pjd5t")
+
+[node name="Button15" type="TextureButton" parent="CanvasLayer/StarInventory/StarContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_pjd5t")
+
+[node name="Button16" type="TextureButton" parent="CanvasLayer/StarInventory/StarContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_pjd5t")
+
+[node name="Button17" type="TextureButton" parent="CanvasLayer/StarInventory/StarContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_pjd5t")
+
+[node name="Button18" type="TextureButton" parent="CanvasLayer/StarInventory/StarContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_pjd5t")
+
+[node name="Button19" type="TextureButton" parent="CanvasLayer/StarInventory/StarContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_pjd5t")
