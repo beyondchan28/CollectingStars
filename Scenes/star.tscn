@@ -1,13 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://dxtyomnokngcc"]
+[gd_scene load_steps=3 format=3 uid="uid://dxtyomnokngcc"]
 
 [ext_resource type="Script" path="res://Scripts/star.gd" id="1_8jruo"]
+[ext_resource type="Texture2D" uid="uid://d1hg6btdef5gb" path="res://icon.svg" id="2_afpyy"]
 
-[node name="Star" type="RigidBody2D"]
+[node name="Star" type="Node2D"]
 position = Vector2(99, 32)
-gravity_scale = 0.0
-contact_monitor = true
-max_contacts_reported = 2
 script = ExtResource("1_8jruo")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+freeze = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidBody2D"]
 polygon = PackedVector2Array(0, -25, -6, -7, -21, 0, -6, 6, 0, 21, 6, 5, 22, 0, 6, -6)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_afpyy")

@@ -1,15 +1,15 @@
-extends RigidBody2D
+extends Node2D
 
-func _init() -> void:
-	self.sleeping = true
+var _is_hold := true
 
 func _ready() -> void:
-	self.body_entered.connect(_on_collide_with_star)
+	$RigidBody2D.sleeping = true
+	$RigidBody2D.freeze = true
 
-func _on_collide_with_star(star: RigidBody2D) -> void:
-	print(star.name)
-	pass
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _input(event: InputEvent) -> void:
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		_is_hold = false
+		$RigidBody2D.sleeping = false
+		$RigidBody2D.freeze = false
+	if _is_hold:
+		self.global_position = get_global_mouse_position()

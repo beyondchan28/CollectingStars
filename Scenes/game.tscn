@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dsbbkdrb63636"]
+[gd_scene load_steps=8 format=3 uid="uid://dsbbkdrb63636"]
 
 [ext_resource type="PackedScene" uid="uid://dxtyomnokngcc" path="res://Scenes/star.tscn" id="1_ajy5d"]
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_judn8"]
@@ -6,15 +6,26 @@
 [ext_resource type="Script" path="res://Scripts/star_button.gd" id="2_f0i5m"]
 [ext_resource type="Script" path="res://Scripts/star_inventory.gd" id="2_u5lqo"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_18jwe"]
+size = Vector2(70, 786)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7snrj"]
+size = Vector2(70, 1182)
+
 [node name="Game" type="Node2D"]
 script = ExtResource("1_judn8")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(110, 126)
+gravity_scale = 0.0
+contact_monitor = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidBody2D"]
+polygon = PackedVector2Array(0, -25, -6, -7, -21, 0, -6, 6, 0, 21, 6, 5, 22, 0, 6, -6)
 
 [node name="StarsParent" type="Node2D" parent="."]
 
 [node name="RigidBody2D" parent="StarsParent" instance=ExtResource("1_ajy5d")]
-
-[node name="RigidBody2D2" parent="StarsParent" instance=ExtResource("1_ajy5d")]
-position = Vector2(98, 60)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -111,3 +122,18 @@ texture_normal = ExtResource("1_pjd5t")
 [node name="Button19" type="TextureButton" parent="CanvasLayer/StarInventory/StarContainer"]
 layout_mode = 2
 texture_normal = ExtResource("1_pjd5t")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-25, 278)
+shape = SubResource("RectangleShape2D_18jwe")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1179, 278)
+shape = SubResource("RectangleShape2D_18jwe")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(577, 662)
+rotation = -1.57079
+shape = SubResource("RectangleShape2D_7snrj")
