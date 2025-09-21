@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/star.gd" id="1_8jruo"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_on0nd"]
+rough = true
 bounce = 1.0
 absorbent = true
 

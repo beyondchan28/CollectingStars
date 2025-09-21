@@ -2,20 +2,14 @@ class_name StarButton extends TextureButton
 
 @onready var _stars_parent: Node2D = $"../../../../StarsParent"
 
-@export var _star_amount := 0 # how many star this button contain
+@export var _star_amount := 1 # how many star this button contain
 @export var _star_type := Star.StarType.RED
 
 const _star := preload("res://Scenes/star.tscn")
 
 func _ready() -> void:
+	_set_label()
 	$AmountLabel.text = str(_star_amount)
-	match _star_type:
-		Star.StarType.RED:
-			$TypeLabel.text = "RED"
-		Star.StarType.GREEN:
-			$TypeLabel.text = "RED"
-		Star.StarType.BLUE:
-			$TypeLabel.text = "RED"
 	self.pressed.connect(_on_pressed)
 	
 func _on_pressed() -> void:
@@ -29,6 +23,16 @@ func _on_pressed() -> void:
 	decrease_star_amount()
 	if _star_amount == 0:
 		self.queue_free()
+
+func _set_label() -> void :
+	print(_star_type)
+	match _star_type:
+		Star.StarType.RED:
+			$TypeLabel.text = "RED"
+		Star.StarType.GREEN:
+			$TypeLabel.text = "GREEN"
+		Star.StarType.BLUE:
+			$TypeLabel.text = "BLUE"
 
 func increase_star_amount() -> void:
 	_star_amount += 1

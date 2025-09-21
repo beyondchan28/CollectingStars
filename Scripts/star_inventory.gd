@@ -17,11 +17,12 @@ func _stored_star() -> void:
 				_star.queue_free()
 				return
 		_add_new_star_button(_star)
+		_star.queue_free()
+		
 	
 
 func _add_new_star_button(s: Star) -> void:
 	var _new_star_button := _star_button.instantiate()
-	_new_star_button.increase_star_amount()
 	_new_star_button.set_star_type(s.get_type())
 	_star_container.add_child(_new_star_button)
 

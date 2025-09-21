@@ -36,14 +36,6 @@ columns = 3
 [node name="StarButton" parent="CanvasLayer/StarInventory/StarContainer" instance=ExtResource("3_2cq3e")]
 layout_mode = 2
 
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
-position = Vector2(110, 126)
-gravity_scale = 0.0
-contact_monitor = true
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidBody2D"]
-polygon = PackedVector2Array(0, -25, -6, -7, -21, 0, -6, 6, 0, 21, 6, 5, 22, 0, 6, -6)
-
 [node name="StarsParent" type="Node2D" parent="."]
 
 [node name="Star" parent="StarsParent" instance=ExtResource("1_ajy5d")]
@@ -51,9 +43,11 @@ position = Vector2(167, 114)
 
 [node name="Star2" parent="StarsParent" instance=ExtResource("1_ajy5d")]
 position = Vector2(156, 287)
+_type = 1
 
 [node name="Star3" parent="StarsParent" instance=ExtResource("1_ajy5d")]
 position = Vector2(238, 83)
+_type = 2
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -66,11 +60,11 @@ position = Vector2(1182, 349)
 shape = SubResource("RectangleShape2D_18jwe")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(577, 662)
+position = Vector2(577, 688)
 rotation = -1.57079
 shape = SubResource("RectangleShape2D_7snrj")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(560, -22)
+position = Vector2(560, -37)
 rotation = 1.57081
 shape = SubResource("RectangleShape2D_7snrj")

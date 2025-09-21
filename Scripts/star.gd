@@ -4,7 +4,7 @@ enum StarType {
 	RED, GREEN, BLUE
 }
 
-@export var _type := StarType.RED
+@export var _type :StarType
 
 func _ready() -> void:
 	match _type:
@@ -14,7 +14,6 @@ func _ready() -> void:
 			$Display.color = Color.GREEN
 		StarType.BLUE:
 			$Display.color = Color.BLUE
-	
 	
 	$PickArea.input_event.connect(_on_star_clicked)
 	$PickArea.mouse_entered.connect(_on_star_mouse_entered)
