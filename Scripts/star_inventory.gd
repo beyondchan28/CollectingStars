@@ -16,7 +16,6 @@ func _stored_star() -> void:
 				print("GGGG")
 				_btn.increase_star_amount()
 				_star.queue_free()
-				break
 				return
 		_add_new_star_button(_star)
 	
