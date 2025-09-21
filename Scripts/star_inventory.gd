@@ -7,15 +7,19 @@ const _star_button := preload("res://Scenes/star_button.tscn")
 func _stored_star() -> void:
 	var _all_star_btn := _star_container.get_children()
 	var _star := MouseState.get_holded_star()
+	# if no star store, then just create a new btn
 	if _all_star_btn.size() == 0:
 		_add_new_star_button(_star)
 		_star.queue_free()
 	else:
+		# looking through all button
 		for _btn: StarButton in _all_star_btn:
+			# if btn and star match type, then just increase amount
 			if _btn.get_star_type() == _star.get_type():
 				_btn.increase_star_amount()
 				_star.queue_free()
 				return
+		# if no type match, then create a new btn
 		_add_new_star_button(_star)
 		_star.queue_free()
 		

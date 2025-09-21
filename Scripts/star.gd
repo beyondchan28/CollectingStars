@@ -1,6 +1,5 @@
 class_name Star extends RigidBody2D
 
-
 const LAUNCH_POWER := 500.0
 
 enum StarType {
@@ -21,12 +20,13 @@ func _ready() -> void:
 	$PickArea.input_event.connect(_on_star_clicked)
 	$PickArea.mouse_entered.connect(_on_star_mouse_entered)
 	$PickArea.mouse_exited.connect(_on_star_mouse_exited)
-	#freeze_physics(true)
 
+# toggle the physics state, so its more performant and prevent unintented behavior
 func freeze_physics(b: bool) -> void:
 	self.sleeping = b
 	self.freeze = b
 
+# picking the star via PickArea (Area2D)
 func _on_star_clicked(_viewport, event: InputEvent, _shape_idx) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.is_pressed():
@@ -35,7 +35,7 @@ func _on_star_clicked(_viewport, event: InputEvent, _shape_idx) -> void:
 
 func _on_star_mouse_entered() -> void:
 	var tween = create_tween()
-	tween.tween_property($Display, "scale", Vector2(1.2, 1.2), 0.2)
+	tween.tween_property($Display, "scale", Vector2(1.3, 1.3), 0.2)
 
 func _on_star_mouse_exited() -> void:
 	var tween = create_tween()
@@ -49,4 +49,6 @@ func get_type() -> StarType:
 func launch() -> void:
 	self.apply_impulse(Vector2.LEFT * LAUNCH_POWER) # launch projectile
 	await get_tree().create_timer(0.3).timeout
-	self.apply_impulse(Vector2.RIGHT * (LAUNCH_POWER - 10.0)) # cancel out the launch impulse after 0.3 secs
+	# cancel out the launch impulse after 0.3 secs
+	# NOTE: reduce launch power a bit, so star moving a bit to the left
+	self.apply_impulse(Vector2.RIGHT * (LAUNCH_POWER - 20.0)) 

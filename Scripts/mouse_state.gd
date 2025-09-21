@@ -1,5 +1,7 @@
 extends Node2D
 
+# NOTE: This script is global
+
 var _is_drag := false
 var _holded_star: Star = null
 
@@ -27,7 +29,7 @@ func set_holded_star(s: Star) -> void:
 	_holded_star = s
 
 func get_holded_star() -> Star:
-	assert(is_holding(), "Currently not holding a star")
+	assert(is_holding(), "Currently not holding a star") # make sure to not returning null
 	return _holded_star
 
 func is_drag() -> bool:

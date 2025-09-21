@@ -1,6 +1,5 @@
 class_name StarButton extends TextureButton
 
-
 @onready var _stars_parent: Node2D = $"../../../../StarsParent"
 
 @export var _star_amount := 1 # how many star this button contain
@@ -9,7 +8,6 @@ class_name StarButton extends TextureButton
 const _star := preload("res://Scenes/star.tscn")
 
 func _ready() -> void:
-	self.pivot_offset = self.size/2.0
 	_set_label()
 	$AmountLabel.text = str(_star_amount)
 	self.pressed.connect(_on_pressed)
