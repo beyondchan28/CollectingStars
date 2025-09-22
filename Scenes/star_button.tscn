@@ -5,6 +5,7 @@
 
 [node name="StarButton" type="TextureButton"]
 self_modulate = Color(0, 0, 0, 1)
+y_sort_enabled = true
 mouse_filter = 1
 action_mode = 0
 button_mask = 3
@@ -30,6 +31,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 expand_mode = 1
 
 [node name="AmountLabel" type="Label" parent="."]

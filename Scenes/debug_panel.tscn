@@ -16,6 +16,7 @@ script = ExtResource("1_edecj")
 layout_mode = 0
 offset_right = 118.0
 offset_bottom = 40.0
+mouse_filter = 1
 text = "DEBUG PANEL"
 
 [node name="DebugScroll" type="ScrollContainer" parent="."]

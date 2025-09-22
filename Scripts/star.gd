@@ -6,6 +6,9 @@ enum StarType {
 	RED, GREEN, BLUE, PINK, GOLD, CHOCOLATE
 }
 
+@onready var _sfx := $SFX
+@onready var _vfx := $VFX
+
 var _star_color := {
 	StarType.RED: Color.RED,
 	StarType.GREEN: Color.GREEN,
@@ -23,6 +26,7 @@ func _ready() -> void:
 	$PickArea.input_event.connect(_on_star_clicked)
 	$PickArea.mouse_entered.connect(_on_star_mouse_entered)
 	$PickArea.mouse_exited.connect(_on_star_mouse_exited)
+	self.body_entered.connect(_on_colliding)
 
 # toggle the physics state, so its more performant and prevent unintented behavior
 func freeze_physics(b: bool) -> void:
@@ -50,9 +54,15 @@ func set_type(st: StarType) -> void:
 func get_type() -> StarType:
 	return _type
 
+func _on_colliding(_body) -> void:
+	if not _sfx.is_playing():
+		_sfx.play()
+	if not _vfx.is_emitting():
+		_vfx.set_emitting(true)
+
 func launch() -> void:
 	self.apply_impulse(Vector2.LEFT * LAUNCH_POWER) # launch projectile
-	await get_tree().create_timer(0.3).timeout
+	await get_tree().create_timer(1.0).timeout
 	# cancel out the launch impulse after 0.3 secs
 	# NOTE: reduce launch power a bit, so star moving a bit to the left
 	self.apply_impulse(Vector2.RIGHT * (LAUNCH_POWER - 20.0)) 

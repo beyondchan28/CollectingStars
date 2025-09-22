@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dxtyomnokngcc"]
+[gd_scene load_steps=10 format=3 uid="uid://dxtyomnokngcc"]
 
 [ext_resource type="Script" path="res://Scripts/star.gd" id="1_8jruo"]
+[ext_resource type="AudioStream" uid="uid://ckour4tvd3fl4" path="res://Assets/Pop1.wav" id="2_wmdh3"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_on0nd"]
 rough = true
@@ -8,13 +9,47 @@ bounce = 1.0
 absorbent = true
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1lcjt"]
-radius = 12.0
+radius = 25.02
+
+[sub_resource type="Gradient" id="Gradient_d01n6"]
+offsets = PackedFloat32Array(0.528239, 1)
+colors = PackedColorArray(1, 1, 1, 0.721569, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_11xlr"]
+gradient = SubResource("Gradient_d01n6")
+
+[sub_resource type="Curve" id="Curve_fwc75"]
+max_value = 2.0
+_data = [Vector2(0.0140625, 0.260394), 0.0, 0.0, 0, 0, Vector2(1, 1.49934), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ctbm3"]
+curve = SubResource("Curve_fwc75")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_r1a28"]
+lifetime_randomness = 0.3
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+angle_min = 94.9
+angle_max = 94.9
+spread = 180.0
+initial_velocity_min = 352.44
+initial_velocity_max = 352.44
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 22.35
+linear_accel_max = 22.35
+scale_min = 6.73
+scale_max = 6.73
+scale_curve = SubResource("CurveTexture_ctbm3")
+color_ramp = SubResource("GradientTexture1D_11xlr")
 
 [node name="Star" type="RigidBody2D"]
 position = Vector2(99, 32)
 disable_mode = 1
 physics_material_override = SubResource("PhysicsMaterial_on0nd")
 gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 100
 script = ExtResource("1_8jruo")
 
 [node name="PickArea" type="Area2D" parent="."]
@@ -28,4 +63,19 @@ shape = SubResource("CircleShape2D_1lcjt")
 polygon = PackedVector2Array(0, -23, -7, -8, -25, -7, -9, 3, -16, 19, 0, 10, 14, 19, 9, 4, 25, -6, 6, -9)
 
 [node name="Display" type="Polygon2D" parent="."]
+self_modulate = Color(128.498, 128.498, 128.498, 1)
+color = Color(100, 0, 0, 1)
 polygon = PackedVector2Array(0, -23, -7, -8, -25, -7, -9, 3, -16, 19, 0, 10, 14, 19, 9, 4, 25, -6, 6, -9)
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_wmdh3")
+
+[node name="VFX" type="GPUParticles2D" parent="."]
+self_modulate = Color(100, 0.7, 0, 1)
+emitting = false
+amount = 40
+amount_ratio = 0.5
+process_material = SubResource("ParticleProcessMaterial_r1a28")
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0

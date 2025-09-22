@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7ud6u47343cc"]
+
+[ext_resource type="Script" path="res://Scripts/star_inventory.gd" id="1_xame1"]
+[ext_resource type="PackedScene" uid="uid://bwl56k15phhv0" path="res://Scenes/star_button.tscn" id="2_xvpri"]
+
+[node name="StarInventory" type="ScrollContainer"]
+anchors_preset = -1
+anchor_left = 0.623431
+anchor_top = 0.034
+anchor_right = 0.977431
+anchor_bottom = 0.957
+offset_left = -0.192017
+offset_top = -0.0320015
+offset_bottom = -0.135986
+grow_horizontal = 0
+grow_vertical = 2
+vertical_scroll_mode = 0
+script = ExtResource("1_xame1")
+metadata/_edit_use_anchors_ = true
+
+[node name="StarContainer" type="GridContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_constants/h_separation = 7
+theme_override_constants/v_separation = 7
+columns = 3
+
+[node name="StarButton" parent="StarContainer" instance=ExtResource("2_xvpri")]
+layout_mode = 2
+_star_type = 1

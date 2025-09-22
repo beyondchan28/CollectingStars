@@ -4,6 +4,17 @@ extends Node2D
 
 var _is_drag := false
 var _holded_star: Star = null
+var _sfx: AudioStreamPlayer
+
+var _sfx_sound := {
+	"pick": preload("res://Assets/Pick.ogg"),
+	"release": preload("res://Assets/Release.ogg"),
+	"launch": preload("res://Assets/Launch.ogg"),
+}
+
+func _ready() -> void:
+	_sfx = AudioStreamPlayer.new()
+	self.add_child(_sfx)
 
 func _unhandled_input(event: InputEvent) -> void:
 	# chek mouse left button event
@@ -19,10 +30,13 @@ func _unhandled_input(event: InputEvent) -> void:
 			if is_holding():
 				_holded_star.freeze_physics(false)
 				_holded_star = null
+				play_sound("release")
 				print("[INFO] Release Star")
-			
+	
 	if _is_drag and is_holding() and event is InputEventMouseMotion:
 		_holded_star.position = get_global_mouse_position()
+	
+
 
 func is_holding() -> bool:
 	return _holded_star != null
@@ -30,6 +44,11 @@ func is_holding() -> bool:
 # Happen when clicked a star
 func set_holded_star(s: Star) -> void:
 	_holded_star = s
+	play_sound("pick")
+
+func play_sound(sound_name: String) -> void:
+	_sfx.stream = _sfx_sound[sound_name]
+	_sfx.play()
 
 func get_holded_star() -> Star:
 	assert(is_holding(), "[ERROR] Currently not holding a star") # make sure to not returning null
