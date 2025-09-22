@@ -55,10 +55,8 @@ func get_type() -> StarType:
 	return _type
 
 func _on_colliding(_body) -> void:
-	if not _sfx.is_playing():
-		_sfx.play()
-	if not _vfx.is_emitting():
-		_vfx.set_emitting(true)
+	_sfx.play()
+	_vfx.set_emitting(true)
 
 func launch() -> void:
 	self.apply_impulse(Vector2.LEFT * LAUNCH_POWER) # launch projectile

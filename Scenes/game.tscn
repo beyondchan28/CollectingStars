@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dxtyomnokngcc" path="res://Scenes/star.tscn" id="1_ajy5d"]
 [ext_resource type="PackedScene" uid="uid://b7ud6u47343cc" path="res://Scenes/star_inventory.tscn" id="1_opkfa"]
 [ext_resource type="PackedScene" uid="uid://bmu1nr72xb0im" path="res://Scenes/debug_panel.tscn" id="3_hsxt7"]
-[ext_resource type="Script" path="res://Scripts/description_label.gd" id="3_jsdre"]
+[ext_resource type="PackedScene" uid="uid://d7xiljtn31v8" path="res://Scenes/description.tscn" id="3_jl0s0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_18jwe"]
 size = Vector2(70, 724)
@@ -31,36 +31,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="DebugPanel" parent="CanvasLayer" instance=ExtResource("3_hsxt7")]
 
-[node name="Description" type="ColorRect" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 525.0
-offset_top = 51.0
-offset_right = -249.0
-offset_bottom = -523.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(582, 0)
-mouse_filter = 2
-color = Color(0.309385, 0.309385, 0.309385, 1)
-script = ExtResource("3_jsdre")
-
-[node name="DescriptionLabel" type="Label" parent="CanvasLayer/Description"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 28.0
-offset_top = 21.0
-offset_right = -28.0
-offset_bottom = -21.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "TOP
-"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Description" parent="CanvasLayer" instance=ExtResource("3_jl0s0")]
 
 [node name="StarsParent" type="Node2D" parent="."]
 z_index = 1

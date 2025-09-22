@@ -4,7 +4,7 @@ const _star := preload("res://Scenes/star.tscn")
 
 var _stars_parent: Node2D
 var _description_label: Description
-@onready var _star_atlas :AtlasTexture = preload("res://Assets/button_atlas.tres")
+@onready var _star_atlas :AtlasTexture = preload("res://Assets/Visuals/button_atlas.tres")
 @onready var _star_atlas_region_size := _star_atlas.region.size
 
 @export var _star_amount := 1 # how many star this button contain
@@ -22,6 +22,7 @@ var _star_atlas_index := {
 }
 
 func _ready() -> void:
+	self.pivot_offset = self.size * 0.5
 	_set_atlas_button()
 	self.mouse_entered.connect(_on_mouse_entered)
 	self.mouse_exited.connect(_on_mouse_exited)
@@ -82,6 +83,9 @@ func get_star_type() -> Star.StarType:
 	return _star_type
 
 func _on_mouse_entered() -> void:
+	var tween := create_tween()
+	tween.tween_property(self, "scale", Vector2(0.8, 0.8), 0.3)
+	
 	var _desc : String
 	if not is_debug:
 		_desc = "HOLD LEFT CLICK TO DRAG AND\nRIGHT CLICK TO LAUNCH STAR %s" % [_star_type]
@@ -90,4 +94,6 @@ func _on_mouse_entered() -> void:
 	_description_label.show_description(is_debug, _desc)
 
 func _on_mouse_exited() -> void:
+	var tween := create_tween()
+	tween.tween_property(self, "scale", Vector2.ONE, 0.3)
 	_description_label.hide()

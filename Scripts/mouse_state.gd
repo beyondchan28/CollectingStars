@@ -7,9 +7,10 @@ var _holded_star: Star = null
 var _sfx: AudioStreamPlayer
 
 var _sfx_sound := {
-	"pick": preload("res://Assets/Pick.ogg"),
-	"release": preload("res://Assets/Release.ogg"),
-	"launch": preload("res://Assets/Launch.ogg"),
+	"pick": preload("res://Assets/Sounds/Pick.ogg"),
+	"release": preload("res://Assets/Sounds/Release.ogg"),
+	"launch": preload("res://Assets/Sounds/Launch.ogg"),
+	"spawn": preload("res://Assets/Sounds/Spawn.ogg"),
 }
 
 func _ready() -> void:

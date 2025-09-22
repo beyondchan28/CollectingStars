@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://dxtyomnokngcc"]
 
 [ext_resource type="Script" path="res://Scripts/star.gd" id="1_8jruo"]
-[ext_resource type="AudioStream" uid="uid://ckour4tvd3fl4" path="res://Assets/Pop1.wav" id="2_wmdh3"]
+[ext_resource type="AudioStream" uid="uid://ckour4tvd3fl4" path="res://Assets/Sounds/Pop1.wav" id="2_wmdh3"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_on0nd"]
 rough = true
@@ -63,7 +63,6 @@ shape = SubResource("CircleShape2D_1lcjt")
 polygon = PackedVector2Array(0, -23, -7, -8, -25, -7, -9, 3, -16, 19, 0, 10, 14, 19, 9, 4, 25, -6, 6, -9)
 
 [node name="Display" type="Polygon2D" parent="."]
-self_modulate = Color(128.498, 128.498, 128.498, 1)
 color = Color(100, 0, 0, 1)
 polygon = PackedVector2Array(0, -23, -7, -8, -25, -7, -9, 3, -16, 19, 0, 10, 14, 19, 9, 4, 25, -6, 6, -9)
 

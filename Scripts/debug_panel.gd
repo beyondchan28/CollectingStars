@@ -15,6 +15,7 @@ func _on_spawn_btn_pressed(st: Star.StarType) -> void:
 	_new_star.set_type(st)
 	_new_star.global_position = _rand_spawn_pos
 	_stars_parent.add_child(_new_star)
+	MouseState.play_sound("spawn")
 	print("[INFO] Spawn Star with type %s" % [st])
 
 func _on_debug_button_pressed() -> void:
