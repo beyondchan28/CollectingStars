@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dxtyomnokngcc" path="res://Scenes/star.tscn" id="1_ajy5d"]
 [ext_resource type="Script" path="res://Scripts/star_inventory.gd" id="2_u5lqo"]
 [ext_resource type="PackedScene" uid="uid://bwl56k15phhv0" path="res://Scenes/star_button.tscn" id="3_2cq3e"]
-[ext_resource type="Script" path="res://Scripts/debug_panel.gd" id="3_qe31x"]
+[ext_resource type="PackedScene" uid="uid://bmu1nr72xb0im" path="res://Scenes/debug_panel.tscn" id="3_hsxt7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_18jwe"]
 size = Vector2(70, 724)
@@ -54,64 +54,7 @@ columns = 3
 layout_mode = 2
 _star_type = 1
 
-[node name="DebugPanel" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_right = 212.0
-grow_vertical = 2
-mouse_filter = 2
-script = ExtResource("3_qe31x")
-
-[node name="DebugButton" type="Button" parent="CanvasLayer/DebugPanel"]
-layout_mode = 0
-offset_right = 118.0
-offset_bottom = 40.0
-text = "DEBUG PANEL"
-
-[node name="DebugScroll" type="ScrollContainer" parent="CanvasLayer/DebugPanel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.0801887
-anchor_top = 0.58642
-anchor_right = 1.92925
-anchor_bottom = 1.0
-grow_vertical = 0
-vertical_scroll_mode = 0
-metadata/_edit_use_anchors_ = true
-
-[node name="DebugContainer" type="GridContainer" parent="CanvasLayer/DebugPanel/DebugScroll"]
-layout_mode = 2
-columns = 3
-
-[node name="StarButton" parent="CanvasLayer/DebugPanel/DebugScroll/DebugContainer" instance=ExtResource("3_2cq3e")]
-layout_mode = 2
-_star_type = 0
-is_debug = true
-
-[node name="StarButton2" parent="CanvasLayer/DebugPanel/DebugScroll/DebugContainer" instance=ExtResource("3_2cq3e")]
-layout_mode = 2
-_star_type = 1
-is_debug = true
-
-[node name="StarButton3" parent="CanvasLayer/DebugPanel/DebugScroll/DebugContainer" instance=ExtResource("3_2cq3e")]
-layout_mode = 2
-_star_type = 2
-is_debug = true
-
-[node name="StarButton4" parent="CanvasLayer/DebugPanel/DebugScroll/DebugContainer" instance=ExtResource("3_2cq3e")]
-layout_mode = 2
-_star_type = 3
-is_debug = true
-
-[node name="StarButton5" parent="CanvasLayer/DebugPanel/DebugScroll/DebugContainer" instance=ExtResource("3_2cq3e")]
-layout_mode = 2
-_star_type = 4
-is_debug = true
-
-[node name="StarButton6" parent="CanvasLayer/DebugPanel/DebugScroll/DebugContainer" instance=ExtResource("3_2cq3e")]
-layout_mode = 2
-is_debug = true
+[node name="DebugPanel" parent="CanvasLayer" instance=ExtResource("3_hsxt7")]
 
 [node name="StarsParent" type="Node2D" parent="."]
 

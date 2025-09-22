@@ -1,0 +1,84 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmu1nr72xb0im"]
+
+[ext_resource type="Script" path="res://Scripts/debug_panel.gd" id="1_edecj"]
+[ext_resource type="PackedScene" uid="uid://bwl56k15phhv0" path="res://Scenes/star_button.tscn" id="2_2kkhq"]
+
+[node name="DebugPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 452.0
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_edecj")
+
+[node name="DebugButton" type="Button" parent="."]
+layout_mode = 0
+offset_right = 118.0
+offset_bottom = 40.0
+text = "DEBUG PANEL"
+
+[node name="DebugScroll" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 22.0
+offset_top = -72.0
+offset_right = -22.0
+grow_horizontal = 2
+grow_vertical = 0
+vertical_scroll_mode = 0
+
+[node name="DebugContainer" type="GridContainer" parent="DebugScroll"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+columns = 6
+
+[node name="StarButton" parent="DebugScroll/DebugContainer" instance=ExtResource("2_2kkhq")]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+ignore_texture_size = true
+stretch_mode = 0
+_star_type = 0
+is_debug = true
+
+[node name="StarButton2" parent="DebugScroll/DebugContainer" instance=ExtResource("2_2kkhq")]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+ignore_texture_size = true
+stretch_mode = 0
+_star_type = 1
+is_debug = true
+
+[node name="StarButton3" parent="DebugScroll/DebugContainer" instance=ExtResource("2_2kkhq")]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+ignore_texture_size = true
+stretch_mode = 0
+_star_type = 2
+is_debug = true
+
+[node name="StarButton4" parent="DebugScroll/DebugContainer" instance=ExtResource("2_2kkhq")]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+ignore_texture_size = true
+stretch_mode = 0
+_star_type = 3
+is_debug = true
+
+[node name="StarButton5" parent="DebugScroll/DebugContainer" instance=ExtResource("2_2kkhq")]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+ignore_texture_size = true
+stretch_mode = 0
+_star_type = 4
+is_debug = true
+
+[node name="StarButton6" parent="DebugScroll/DebugContainer" instance=ExtResource("2_2kkhq")]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+ignore_texture_size = true
+stretch_mode = 0
+is_debug = true

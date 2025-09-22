@@ -10,7 +10,7 @@ var _star_color := {
 	StarType.RED: Color.RED,
 	StarType.GREEN: Color.GREEN,
 	StarType.BLUE: Color.BLUE,
-	StarType.PINK: Color.PINK,
+	StarType.PINK: Color.DEEP_PINK,
 	StarType.GOLD: Color.GOLD,
 	StarType.CHOCOLATE: Color.CHOCOLATE,
 }
