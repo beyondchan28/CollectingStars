@@ -3,19 +3,22 @@ class_name Star extends RigidBody2D
 const LAUNCH_POWER := 500.0
 
 enum StarType {
-	RED, GREEN, BLUE
+	RED, GREEN, BLUE, PINK, GOLD, CHOCOLATE
+}
+
+var _star_color := {
+	StarType.RED: Color.RED,
+	StarType.GREEN: Color.GREEN,
+	StarType.BLUE: Color.BLUE,
+	StarType.PINK: Color.PINK,
+	StarType.GOLD: Color.GOLD,
+	StarType.CHOCOLATE: Color.CHOCOLATE,
 }
 
 @export var _type :StarType
 
 func _ready() -> void:
-	match _type:
-		StarType.RED:
-			$Display.color = Color.RED
-		StarType.GREEN:
-			$Display.color = Color.GREEN
-		StarType.BLUE:
-			$Display.color = Color.BLUE
+	$Display.color = _star_color[_type]
 	
 	$PickArea.input_event.connect(_on_star_clicked)
 	$PickArea.mouse_entered.connect(_on_star_mouse_entered)
@@ -32,6 +35,7 @@ func _on_star_clicked(_viewport, event: InputEvent, _shape_idx) -> void:
 		if event.is_pressed():
 			freeze_physics(true)
 			MouseState.set_holded_star(self)
+			print("[INFO] A Star picked")
 
 func _on_star_mouse_entered() -> void:
 	var tween = create_tween()

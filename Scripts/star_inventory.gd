@@ -18,17 +18,17 @@ func _stored_star() -> void:
 			if _btn.get_star_type() == _star.get_type():
 				_btn.increase_star_amount()
 				_star.queue_free()
+				print("[INFO] Star Container found and amount increased. The Star Type is %s" % [_star.get_type()])
 				return
 		# if no type match, then create a new btn
 		_add_new_star_button(_star)
 		_star.queue_free()
-		
-	
 
 func _add_new_star_button(s: Star) -> void:
 	var _new_star_button := _star_button.instantiate()
 	_new_star_button.set_star_type(s.get_type())
 	_star_container.add_child(_new_star_button)
+	print("[INFO] Create a new Star container. The Star Type is %s" % [s.get_type()])
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:

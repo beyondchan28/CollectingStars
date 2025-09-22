@@ -1,16 +1,32 @@
 class_name StarButton extends TextureButton
 
-@onready var _stars_parent: Node2D = $"../../../../StarsParent"
-
-@export var _star_amount := 1 # how many star this button contain
-@export var _star_type := Star.StarType.RED
-
 const _star := preload("res://Scenes/star.tscn")
 
+var _stars_parent: Node2D
+@onready var _star_atlas :AtlasTexture = preload("res://Assets/button_atlas.tres")
+@onready var _star_atlas_region_size := _star_atlas.region.size
+
+@export var _star_amount := 1 # how many star this button contain
+@export var _star_type := Star.StarType.CHOCOLATE
+@export var is_debug := false
+
+# NOTE: TYPE : [index X, index Y] -> atlas
+var _star_atlas_index := {
+	Star.StarType.RED: [0, 0],
+	Star.StarType.GREEN: [1, 0],
+	Star.StarType.BLUE: [2, 0],
+	Star.StarType.PINK: [0, 1],
+	Star.StarType.GOLD: [1, 1],
+	Star.StarType.CHOCOLATE: [2, 1],
+}
+
 func _ready() -> void:
-	_set_label()
-	$AmountLabel.text = str(_star_amount)
-	self.pressed.connect(_on_pressed)
+	_set_atlas_button()
+	# not need all of this if the button used for debug panel
+	if not is_debug: 
+		$AmountLabel.text = str(_star_amount)
+		self.pressed.connect(_on_pressed)
+		_stars_parent = $"../../../../StarsParent"
 	
 func _on_pressed() -> void:
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
@@ -23,6 +39,7 @@ func _on_pressed() -> void:
 		_new_star.global_position = get_global_mouse_position()
 		# ------------------------------------------------------
 		_stars_parent.add_child(_new_star)
+		print("[INFO] Drag a Star. The Star Type is %s" % [_star_type])
 		decrease_star_amount()
 	elif Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
 		var _new_star :Star = _star.instantiate()
@@ -30,17 +47,16 @@ func _on_pressed() -> void:
 		_new_star.global_position = self.global_position + self.size/2.0 # launch from the middle of the button
 		_stars_parent.add_child(_new_star)
 		_new_star.launch() # launch star
+		print("[INFO] Launch a Star. The Star Type is %s" % [_star_type])
 		decrease_star_amount()
 		
 
-func _set_label() -> void :
-	match _star_type:
-		Star.StarType.RED:
-			$TypeLabel.text = "RED"
-		Star.StarType.GREEN:
-			$TypeLabel.text = "GREEN"
-		Star.StarType.BLUE:
-			$TypeLabel.text = "BLUE"
+func _set_atlas_button() -> void :
+	var _atlas := _star_atlas.duplicate() # duplicate so every button use different resource
+	var _idx : Array = _star_atlas_index[_star_type]
+	var _pos := Vector2(_star_atlas_region_size.x * _idx[0], _star_atlas_region_size.y * _idx[1])
+	_atlas.region.position = _pos
+	$StarTexture.texture = _atlas
 
 func increase_star_amount() -> void:
 	_star_amount += 1

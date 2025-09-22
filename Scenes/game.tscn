@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dsbbkdrb63636"]
+[gd_scene load_steps=7 format=3 uid="uid://dsbbkdrb63636"]
 
 [ext_resource type="PackedScene" uid="uid://dxtyomnokngcc" path="res://Scenes/star.tscn" id="1_ajy5d"]
 [ext_resource type="Script" path="res://Scripts/star_inventory.gd" id="2_u5lqo"]
 [ext_resource type="PackedScene" uid="uid://bwl56k15phhv0" path="res://Scenes/star_button.tscn" id="3_2cq3e"]
+[ext_resource type="Script" path="res://Scripts/debug_panel.gd" id="3_qe31x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_18jwe"]
 size = Vector2(70, 724)
@@ -15,15 +16,30 @@ size = Vector2(70, 1182)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
 
+[node name="ScrollBackground" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.604167
+anchor_right = 1.00521
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_right = -6.0
+color = Color(0.766037, 0.794983, 0.780066, 1)
+metadata/_edit_use_anchors_ = true
+
 [node name="StarInventory" type="ScrollContainer" parent="CanvasLayer"]
 anchors_preset = -1
-anchor_left = 0.628
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 0.543945
+anchor_left = 0.623431
+anchor_top = 0.034
+anchor_right = 0.977431
+anchor_bottom = 0.957
+offset_left = -0.192017
+offset_top = -0.0320015
+offset_bottom = -0.135986
 grow_horizontal = 0
 grow_vertical = 2
+vertical_scroll_mode = 0
 script = ExtResource("2_u5lqo")
+metadata/_edit_use_anchors_ = true
 
 [node name="StarContainer" type="GridContainer" parent="CanvasLayer/StarInventory"]
 layout_mode = 2
@@ -31,10 +47,71 @@ size_flags_horizontal = 6
 size_flags_vertical = 4
 mouse_filter = 2
 theme_override_constants/h_separation = 7
+theme_override_constants/v_separation = 7
 columns = 3
 
 [node name="StarButton" parent="CanvasLayer/StarInventory/StarContainer" instance=ExtResource("3_2cq3e")]
 layout_mode = 2
+_star_type = 1
+
+[node name="DebugPanel" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 212.0
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("3_qe31x")
+
+[node name="DebugButton" type="Button" parent="CanvasLayer/DebugPanel"]
+layout_mode = 0
+offset_right = 118.0
+offset_bottom = 40.0
+text = "DEBUG PANEL"
+
+[node name="DebugScroll" type="ScrollContainer" parent="CanvasLayer/DebugPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0801887
+anchor_top = 0.58642
+anchor_right = 1.92925
+anchor_bottom = 1.0
+grow_vertical = 0
+vertical_scroll_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="DebugContainer" type="GridContainer" parent="CanvasLayer/DebugPanel/DebugScroll"]
+layout_mode = 2
+columns = 3
+
+[node name="StarButton" parent="CanvasLayer/DebugPanel/DebugScroll/DebugContainer" instance=ExtResource("3_2cq3e")]
+layout_mode = 2
+_star_type = 0
+is_debug = true
+
+[node name="StarButton2" parent="CanvasLayer/DebugPanel/DebugScroll/DebugContainer" instance=ExtResource("3_2cq3e")]
+layout_mode = 2
+_star_type = 1
+is_debug = true
+
+[node name="StarButton3" parent="CanvasLayer/DebugPanel/DebugScroll/DebugContainer" instance=ExtResource("3_2cq3e")]
+layout_mode = 2
+_star_type = 2
+is_debug = true
+
+[node name="StarButton4" parent="CanvasLayer/DebugPanel/DebugScroll/DebugContainer" instance=ExtResource("3_2cq3e")]
+layout_mode = 2
+_star_type = 3
+is_debug = true
+
+[node name="StarButton5" parent="CanvasLayer/DebugPanel/DebugScroll/DebugContainer" instance=ExtResource("3_2cq3e")]
+layout_mode = 2
+_star_type = 4
+is_debug = true
+
+[node name="StarButton6" parent="CanvasLayer/DebugPanel/DebugScroll/DebugContainer" instance=ExtResource("3_2cq3e")]
+layout_mode = 2
+is_debug = true
 
 [node name="StarsParent" type="Node2D" parent="."]
 
@@ -49,7 +126,12 @@ _type = 1
 position = Vector2(238, 83)
 _type = 2
 
+[node name="Star4" parent="StarsParent" instance=ExtResource("1_ajy5d")]
+position = Vector2(238, 83)
+_type = 2
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-33, 352)
